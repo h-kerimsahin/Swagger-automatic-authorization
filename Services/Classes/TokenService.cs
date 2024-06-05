@@ -1,26 +1,12 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using SwaggerAutoAuthentication.Services.Interfaces;
+using SwaggerAutoAuthentication.ViewModels;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace SwaggerAutoAuthentication
+namespace SwaggerAutoAuthentication.Services.Classes
 {
-    public class GenerateTokenRequest
-    {
-        public string Username { get; set; }
-    }
-
-    public class GenerateTokenResponse
-    {
-        public string Token { get; set; }
-        public DateTime TokenExpireDate { get; set; }
-    }
-
-    public interface ITokenService
-    {
-        public Task<GenerateTokenResponse> GenerateToken(GenerateTokenRequest request);
-    }
-
     public class TokenService : ITokenService
     {
         readonly IConfiguration configuration;
@@ -54,5 +40,4 @@ namespace SwaggerAutoAuthentication
             });
         }
     }
-
 }
