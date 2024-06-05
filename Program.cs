@@ -3,6 +3,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SwaggerAutoAuthentication;
+using SwaggerAutoAuthentication.Services.Interfaces;
 using System.Text;
 
 IWebHostEnvironment env;

@@ -1,23 +1,8 @@
-﻿namespace SwaggerAutoAuthentication
+﻿using SwaggerAutoAuthentication.Services.Interfaces;
+using SwaggerAutoAuthentication.ViewModels;
+
+namespace SwaggerAutoAuthentication.Services.Classes
 {
-    public class UserLoginRequest
-    {
-        public string Username { get; set; }
-        public string Password { get; set; }
-    }
-
-    public class UserLoginResponse
-    {
-        public bool AuthenticateResult { get; set; }
-        public string AuthToken { get; set; }
-        public DateTime AccessTokenExpireDate { get; set; }
-    }
-
-    public interface IAuthService
-    {
-        public Task<UserLoginResponse> LoginUserAsync(UserLoginRequest request);
-    }
-
     public class AuthService : IAuthService
     {
         readonly ITokenService tokenService;
@@ -28,6 +13,9 @@
 
         async Task<UserLoginResponse> IAuthService.LoginUserAsync(UserLoginRequest request)
         {
+            var userName = "admin";
+            var password = "123456";
+
             UserLoginResponse response = new();
 
             if (string.IsNullOrEmpty(request.Username) || string.IsNullOrEmpty(request.Password))
@@ -35,7 +23,7 @@
                 throw new ArgumentNullException(nameof(request));
             }
 
-            if (request.Username == "admin" && request.Password == "123456")
+            if (request.Username == userName && request.Password == password)
             {
                 var generatedTokenInformation = await tokenService.GenerateToken(new GenerateTokenRequest { Username = request.Username });
 
@@ -47,6 +35,3 @@
             return response;
         }
     }
-
-
-}

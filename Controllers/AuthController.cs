@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SwaggerAutoAuthentication.Services.Interfaces;
+using SwaggerAutoAuthentication.ViewModels;
 
 namespace SwaggerAutoAuthentication.Controllers
 {
