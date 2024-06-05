@@ -15,20 +15,13 @@ namespace SwaggerAutoAuthentication.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(AuthLogin authLogin)
+        public async Task<IActionResult> Login(UserLoginRequest authLogin)
         {
-            var result = await authService.LoginUserAsync(new UserLoginRequest() { Username = authLogin.Kuser, Password = authLogin.Kpass });
+            var result = await authService.LoginUserAsync(authLogin);
 
             return Ok(result);
         }
 
     }
-
-    public class AuthLogin
-    {
-        public string Kuser { get; set; }
-        public string Kpass { get; set; }
-    }
-
 
 }

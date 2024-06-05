@@ -6,15 +6,15 @@
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            kuser: 'admin',
-            kpass: '123456'
+            Username: 'admin',
+            Password: '123456'
         })
     })
         .then(response => response.json())
         .then(data => {
             const token = data.authToken;
             if (token) {
-                const bearerToken = `${token}`;
+                const bearerToken = `Bearer ${token}`;
                 window.localStorage.setItem('jwt-token', bearerToken);
 
                 const checkUIInterval = setInterval(() => {

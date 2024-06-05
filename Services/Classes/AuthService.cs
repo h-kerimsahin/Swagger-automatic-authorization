@@ -35,3 +35,4 @@ namespace SwaggerAutoAuthentication.Services.Classes
             return response;
         }
     }
+}
